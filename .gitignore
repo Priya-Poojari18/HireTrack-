@@ -1,0 +1,25 @@
+﻿# Frontend dependencies and build output
+hiretrack-frontend/node_modules/
+hiretrack-frontend/dist/
+
+# Backend build output
+hiretrack-backend/target/
+
+# Local database files
+hiretrack-backend/data/
+*.mv.db
+*.trace.db
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -844,7 +844,13 @@ if (!preferredJobType.trim()) {
 ) : (
    <>
 
-        <section className="welcome-row"><div><div className="eyebrow"><span className="eyebrow-line"/> YOUR CAREER, IN FOCUS</div><h1>Good morning, Priya <span className="wave">✳</span></h1><p className="welcome-subtitle">A little progress every day adds up to big opportunities.</p></div><button className="primary-button" onClick={() => setShowAdd(true)}><Plus size={17}/> Track an application</button></section>
+        <section className="welcome-row"><div><div className="eyebrow">
+          <span className="eyebrow-line"/> YOUR CAREER, IN FOCUS</div>
+          <h1>Good morning, Priya <span className="wave">✳</span></h1><p className="welcome-subtitle">
+            A little progress every day adds up to big opportunities.</p>
+          </div><button className="primary-button" onClick={() => setShowAdd(true)}>
+          <Plus size={17}/> Track an application</button>
+          </section>
 
         <section className="stats-grid">
 
@@ -910,9 +916,15 @@ if (!preferredJobType.trim()) {
   onClick={() => deleteApplication(job)}
 >
   <X size={18}/>
-</button></div>) : <div className="empty-state"><Search size={22}/><strong>No applications found</strong><span>Try another search or change your filter.</span></div>}</div>
+</button></div>) : <div className="empty-state"><Search size={22}/><strong>No applications found</strong>
 
-            <div className="list-footer"><span>Showing <strong>{filteredJobs.length}</strong> of <strong>{jobs.length}</strong> applications</span><button onClick={() => setShowAdd(true)}><Plus size={14}/> Add application</button></div>
+<span>Try another search or change your filter.</span></div>}</div>
+
+            <div className="list-footer"><span>Showing <strong>{filteredJobs.length}</strong> of <strong>{jobs.length}
+
+            </strong>
+             applications</span>
+            <button onClick={() => setShowAdd(true)}><Plus size={14}/> Add application</button></div>
 
           </div>
 
@@ -934,7 +946,29 @@ if (!preferredJobType.trim()) {
 
     </main>
 
-    {showAdd && <div className="modal-backdrop" onClick={() => setShowAdd(false)}><div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={e => e.stopPropagation()}><div className="modal-heading"><div><div className="section-kicker">YOUR PIPELINE</div><h2 id="modal-title">Track a new application</h2><p>Add an opportunity to keep it organized.</p></div><button className="icon-button" onClick={() => setShowAdd(false)} aria-label="Close dialog"><X size={18}/></button></div><form onSubmit={addApplication}><label>Job title<input autoFocus value={role} onChange={e => setRole(e.target.value)} placeholder="e.g. Java Developer" required/></label><label>Company name<input value={company} onChange={e => setCompany(e.target.value)} placeholder="e.g. Infosys" required/></label><div className="modal-note"><FileText size={16}/><span>New applications start with the <strong>In Review</strong> status. You can track their progress here.</span></div><div className="modal-actions"><button type="button" className="outline-button" onClick={() => setShowAdd(false)}>Cancel</button><button type="submit" className="primary-button"><Plus size={16}/> Add application</button></div></form></div></div>}
+    {showAdd && <div className="modal-backdrop" onClick={() => setShowAdd(false)}>
+      <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={e => e.stopPropagation()}>
+        <div className="modal-heading"><div>
+          <div className="section-kicker">YOUR PIPELINE</div>
+        <h2 id="modal-title">Track a new application</h2><p>Add an opportunity to keep it organized.</p>
+        </div><button className="icon-button" onClick={() => setShowAdd(false)} aria-label="Close dialog"><X size={18}/>
+        </button>
+        </div>
+        <form onSubmit={addApplication}>
+          <label>Job title<input autoFocus value={role} onChange={e => setRole(e.target.value)} placeholder="e.g. Java Developer" required/>
+          </label><label>Company name<input value={company} onChange={e => setCompany(e.target.value)} placeholder="e.g. Infosys" required/>
+          </label>
+          <label>
+  Location
+  <input
+    value={location}
+    onChange={e => setLocation(e.target.value)}
+    placeholder="e.g. Bengaluru, India"
+    required
+  />
+</label>
+          <div className="modal-note"><FileText size={16}/><span>New applications start with the <strong>In Review</strong> status. You can track their progress here.</span></div><div className="modal-actions"><button type="button" className="outline-button" onClick={() => setShowAdd(false)}>Cancel</button><button type="submit" className="primary-button">
+      <Plus size={16}/> Add application</button></div></form></div></div>}
 
     {notice && <div className="toast"><Check size={17}/><span>{notice}</span><button onClick={() => setNotice('')} aria-label="Dismiss message"><X size={15}/></button></div>}
 

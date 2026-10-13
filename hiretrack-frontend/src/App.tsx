@@ -26,7 +26,7 @@ export default function App() {
 
   useEffect(() => {
 
-  fetch('http://localhost:8080/api/applications')
+  fetch('/api/applications')
 
     .then((response) => {
 
@@ -69,7 +69,7 @@ const [applicationStats, setApplicationStats] = useState({
   rejected: 0,
 });
 useEffect(() => {
-  fetch('http://localhost:8080/api/profile')
+  fetch('/api/profile')
     .then((response) => response.json())
     .then((data) => {
       setProfileName(data.name);
@@ -81,7 +81,7 @@ useEffect(() => {
     });
 }, []);
 const loadApplicationStats = () => {
-  fetch('http://localhost:8080/api/applications/stats')
+  fetch('/api/applications/stats')
     .then((response) => response.json())
     .then((data) => {
       setApplicationStats(data);
@@ -135,7 +135,7 @@ const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 }
 
     try {
-      const response = await fetch('http://localhost:8080/api/applications', { 
+      const response = await fetch('/api/applications', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -150,7 +150,7 @@ const [selectedJob, setSelectedJob] = useState<Job | null>(null);
         throw new Error(errorText || 'Failed to save application.');
       }
 
-      const getResponse = await fetch('http://localhost:8080/api/applications');
+      const getResponse = await fetch('/api/applications');
       if (!getResponse.ok) {
         throw new Error('Application saved, but reloading the list failed.');
       }
@@ -184,7 +184,7 @@ setShowAdd(false);
 
   try {
     const response = await fetch(
-      `http://localhost:8080/api/applications/${editingJob.id}`,
+      `/api/applications/${editingJob.id}`,
       {
         method: 'PUT',
         headers: {
@@ -205,7 +205,7 @@ setShowAdd(false);
     }
 
     const getResponse = await fetch(
-      'http://localhost:8080/api/applications'
+      '/api/applications'
     );
 
     if (!getResponse.ok) {
@@ -247,7 +247,7 @@ const deleteApplication = async (job: Job) => {
 
   try {
     const response = await fetch(
-      `http://localhost:8080/api/applications/${job.id}`,
+      `/api/applications/${job.id}`,
       {
         method: 'DELETE',
       }
@@ -280,7 +280,7 @@ const deleteApplication = async (job: Job) => {
 ) => {
   try {
     const response = await fetch(
-  `http://localhost:8080/api/applications/${job.id}/status`,
+  `/api/applications/${job.id}/status`,
   {
     method: 'PATCH',
     headers: {
@@ -569,7 +569,7 @@ if (!preferredJobType.trim()) {
   return;
 }
   try {
-    const response = await fetch('http://localhost:8080/api/profile', {
+    const response = await fetch('/api/profile', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
